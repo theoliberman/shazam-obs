@@ -18,7 +18,7 @@ set(LINUX_MAINTAINER_EMAIL "me@mymailhost.com")
 
 # Add your custom source files here - header files are optional and only required for visibility
 # e.g. in Xcode or Visual Studio
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE src/plugin-main.cpp)
+target_sources(${CMAKE_PROJECT_NAME} PRIVATE src/plugin-main.cpp src/forms/SettingsDialog.cpp)
 
 # Import libobs as main plugin dependency
 find_package(libobs REQUIRED)
@@ -40,9 +40,7 @@ set_target_properties(
 configure_file(src/plugin-macros.h.in ${CMAKE_SOURCE_DIR}/src/plugin-macros.generated.h)
 
 target_sources(
-  ${CMAKE_PROJECT_NAME}
-  PRIVATE src/plugin-macros.generated.h
-          src/forms/SettingsDialog.h)
+  ${CMAKE_PROJECT_NAME} PRIVATE src/plugin-macros.generated.h src/forms/SettingsDialog.h)
 
 # /!\ TAKE NOTE: No need to edit things past this point /!\
 
