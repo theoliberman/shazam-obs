@@ -24,7 +24,8 @@ with this program. If not, see <https://www.gnu.org/licenses/>
 OBS_DECLARE_MODULE()
 OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
 
-void callback() {
+void callback()
+{
 	blog(LOG_INFO, "Click !")
 }
 
@@ -32,7 +33,8 @@ bool obs_module_load(void)
 {
 	const char *menuActionText =
 		obs_module_text("ShazamOBS.Settings.DialogTitle");
-	QAction *menuAction = (QAction *)obs_frontend_add_tools_menu_qaction(menuActionText);
+	QAction *menuAction =
+		(QAction *)obs_frontend_add_tools_menu_qaction(menuActionText);
 	QObject::connect(menuAction, &QAction::triggered, [] { callback(); });
 
 	blog(LOG_INFO, "plugin loaded successfully (version %s)",
