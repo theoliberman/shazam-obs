@@ -26,7 +26,7 @@ OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
 
 void callback()
 {
-	blog(LOG_INFO, "Click !")
+	blog(LOG_INFO, "Click !");
 }
 
 bool obs_module_load(void)
