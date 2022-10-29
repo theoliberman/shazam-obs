@@ -17,9 +17,11 @@ with this program. If not, see <https://www.gnu.org/licenses/>
 */
 
 #include <QAction>
+#include <QMainWindow>
 #include <obs-module.h>
 #include <obs-frontend-api.h>
 #include "plugin-macros.generated.h"
+#include "forms/SettingsDialog.h"
 
 OBS_DECLARE_MODULE()
 OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
@@ -29,8 +31,17 @@ void callback()
 	blog(LOG_INFO, "Click !");
 }
 
+SettingsDialog *_settingsDialog = nullptr;
+
 bool obs_module_load(void)
 {
+
+	obs_frontend_push_ui_translation(obs_module_get_string);
+	QMainWindow *mainWindow =
+		static_cast<QMainWindow *>(obs_frontend_get_main_window());
+	_settingsDialog = new SettingsDialog(mainWindow);
+	obs_frontend_pop_ui_translation();
+
 	const char *menuActionText =
 		obs_module_text("ShazamOBS.Settings.DialogTitle");
 	QAction *menuAction =
