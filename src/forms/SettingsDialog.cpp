@@ -16,8 +16,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
 	using cb_t = decltype(cb);
 	obs_enum_sources(
-		[](void *data, obs_source_t *source) {
-			return (*static_cast<cb_t *>(data))(source);
+		[](void *d, obs_source_t *source) {
+			return (*static_cast<cb_t *>(d))(source);
 		},
 		&cb);
 }
