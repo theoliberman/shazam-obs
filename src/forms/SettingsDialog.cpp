@@ -36,7 +36,7 @@ static bool enumAudioSources(void *stx, obs_source_t *source)
 
 	if ((flags & OBS_SOURCE_AUDIO) != 0) {
 		const char *name = obs_source_get_name(source);
-		blog(LOG_INFO, name);
+		blog(LOG_INFO, "Source : %s", name);
 	}
 	return true;
 }
