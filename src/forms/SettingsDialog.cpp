@@ -39,3 +39,8 @@ void SettingsDialog::showEvent(QShowEvent *)
 		},
 		&cb);
 }
+
+void SettingsDialog::hideEvent(QShowEvent *)
+{
+	ui->comboBox->clear();
+}

@@ -11,6 +11,7 @@ public:
 	~SettingsDialog();
 	void ToggleShowHide();
 	void showEvent(QShowEvent *event);
+	void hideEvent(QShowEvent *event);
 
 private:
 	Ui::SettingsDialog *ui;
