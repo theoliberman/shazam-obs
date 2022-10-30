@@ -39,7 +39,7 @@ jobs:
         run: sudo pip install cmakelang
 
       - name: Run cmake-format
-        run: ./.github/scripts/check-cmake.sh
+        run: ./.github/scripts/check-cmake.sh VERBOSE
 
   macos_build:
     name: 02 - macOS
