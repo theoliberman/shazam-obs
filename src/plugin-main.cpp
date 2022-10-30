@@ -41,7 +41,8 @@ bool obs_module_load(void)
 		obs_module_text("ShazamOBS.Settings.DialogTitle");
 	QAction *menuAction =
 		(QAction *)obs_frontend_add_tools_menu_qaction(menuActionText);
-	QObject::connect(menuAction, &QAction::triggered, [] { _settingsDialog->ToggleShowHide(); });
+	QObject::connect(menuAction, &QAction::triggered,
+			 [] { _settingsDialog->ToggleShowHide(); });
 
 	blog(LOG_INFO, "plugin loaded successfully (version %s)",
 	     PLUGIN_VERSION);
