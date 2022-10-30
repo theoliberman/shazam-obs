@@ -1,5 +1,6 @@
 #include <obs-module.h>
 #include <obs.hpp>
+#include "../plugin-macros.generated.h"
 
 #include "SettingsDialog.h"
 
@@ -7,7 +8,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	: QDialog(parent, Qt::Dialog), ui(new Ui::SettingsDialog)
 {
 	ui->setupUi(this);
-	obs_enum_sources(EnumAudioSources, nullptr);
 }
 
 SettingsDialog::~SettingsDialog()
@@ -21,6 +21,11 @@ void SettingsDialog::ToggleShowHide()
 		setVisible(true);
 	else
 		setVisible(false);
+}
+
+void SettingsDialog::showEvent(QShowEvent *)
+{
+	blog(LOG_INFO, "Show event");
 }
 
 bool SettingsDialog::EnumAudioSources(void *data, obs_source_t *source)
