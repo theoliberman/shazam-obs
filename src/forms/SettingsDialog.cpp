@@ -8,6 +8,20 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	: QDialog(parent, Qt::Dialog), ui(new Ui::SettingsDialog)
 {
 	ui->setupUi(this);
+	auto cb = [this](obs_source_t *source) {
+		uint32_t caps = obs_source_get_output_flags(source);
+		char* name = obs_source_get_name(source);
+		blog(LOG_INFO, "Source : %s", name);
+		return true;
+	};
+
+	using cb_t = decltype(cb);
+	obs_enum_sources(
+		[](void *data, obs_source_t *source) {
+			return (*static_cast<cb_t *>(data))(source);
+		},
+		&cb);
+	ui->source->blockSignals(false);
 }
 
 SettingsDialog::~SettingsDialog()
@@ -21,20 +35,4 @@ void SettingsDialog::ToggleShowHide()
 		setVisible(true);
 	else
 		setVisible(false);
-}
-
-void SettingsDialog::showEvent(QShowEvent *)
-{
-	obs_enum_sources(enumAudioSources, nullptr);
-}
-
-static bool enumAudioSources(void *, obs_source_t *source)
-{
-	uint32_t flags = obs_source_get_output_flags(source);
-
-	if ((flags & OBS_SOURCE_AUDIO) != 0) {
-		const char *name = obs_source_get_name(source);
-		blog(LOG_INFO, "Source : %s", name);
-	}
-	return true;
 }
