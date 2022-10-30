@@ -28,8 +28,10 @@ void SettingsDialog::showEvent(QShowEvent *)
 	blog(LOG_INFO, "Show event");
 }
 
-bool SettingsDialog::EnumAudioSources(void, obs_source_t *source)
+bool SettingsDialog::EnumAudioSources(void *stx, obs_source_t *source)
 {
+	UNREFERENCED_PARAMETER(stx);
+
 	uint32_t flags = obs_source_get_output_flags(source);
 
 	if ((flags & OBS_SOURCE_AUDIO) != 0) {
