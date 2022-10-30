@@ -40,7 +40,7 @@ void SettingsDialog::showEvent(QShowEvent *)
 		&cb);
 }
 
-void SettingsDialog::hideEvent(QShowEvent *)
+void SettingsDialog::hideEvent(QHideEvent *)
 {
 	ui->comboBox->clear();
 }
