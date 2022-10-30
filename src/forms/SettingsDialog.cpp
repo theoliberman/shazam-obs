@@ -10,7 +10,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	ui->setupUi(this);
 	auto cb = [this](obs_source_t *source) {
 		uint32_t caps = obs_source_get_output_flags(source);
-		char* name = obs_source_get_name(source);
+		char *name = obs_source_get_name(source);
 		blog(LOG_INFO, "Source : %s", name);
 		return true;
 	};
@@ -21,7 +21,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 			return (*static_cast<cb_t *>(data))(source);
 		},
 		&cb);
-	ui->source->blockSignals(false);
 }
 
 SettingsDialog::~SettingsDialog()
