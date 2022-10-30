@@ -9,6 +9,7 @@ public:
 	explicit SettingsDialog(QWidget *parent = 0);
 	~SettingsDialog();
 	void ToggleShowHide();
+	bool EnumAudioSources();
 
 private:
 	Ui::SettingsDialog *ui;
