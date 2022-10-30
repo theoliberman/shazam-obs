@@ -1,5 +1,6 @@
 #pragma once
 
+#include <obs-module.h>
 #include "ui_SettingsDialog.h"
 
 class SettingsDialog : public QDialog {
