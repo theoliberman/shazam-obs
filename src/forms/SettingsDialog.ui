@@ -14,6 +14,16 @@
    <string>ShazamOBS.Settings.DialogTitle</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>25</y>
+       <width>100</width>
+       <height>50</height>
+      </rect>
+     </property>
+    </widget>  
   </layout>
  </widget>
  <resources>

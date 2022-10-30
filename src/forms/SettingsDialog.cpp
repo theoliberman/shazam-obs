@@ -7,6 +7,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	: QDialog(parent, Qt::Dialog), ui(new Ui::SettingsDialog)
 {
 	ui->setupUi(this);
+	ui->comboBox->addItem("A");
+	ui->comboBox->addItem("B");
+	ui->comboBox->addItem("C");
+	ui->comboBox->addItem("D");
 }
 
 SettingsDialog::~SettingsDialog()
