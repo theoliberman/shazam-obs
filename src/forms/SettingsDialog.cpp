@@ -9,8 +9,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 {
 	ui->setupUi(this);
 	auto cb = [this](obs_source_t *source) {
-		uint32_t caps = obs_source_get_output_flags(source);
-		char *name = obs_source_get_name(source);
+		const char *name = obs_source_get_name(source);
 		blog(LOG_INFO, "Source : %s", name);
 		return true;
 	};
