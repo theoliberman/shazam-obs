@@ -11,7 +11,7 @@ public:
 	~SettingsDialog();
 	void ToggleShowHide();
 	void showEvent(QShowEvent *event);
-	bool enumAudioSources(void *data, obs_source_t *source);
+	static bool enumAudioSources(void *data, obs_source_t *source);
 
 private:
 	Ui::SettingsDialog *ui;
