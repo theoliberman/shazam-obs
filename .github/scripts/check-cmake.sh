@@ -4,7 +4,6 @@ set -o errexit
 set -o pipefail
 
 if [ ${#} -eq 1 -a "${1}" = "VERBOSE" ]; then
-    echo "VERBOSE !"
     VERBOSITY="-l debug"
 else
     VERBOSITY=""
