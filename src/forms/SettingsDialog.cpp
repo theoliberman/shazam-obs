@@ -27,7 +27,8 @@ void SettingsDialog::showEvent(QShowEvent *)
 {
 	auto cb = [this](obs_source_t *source) {
 		char *name = obs_source_get_name(source);
-		blog(LOG_INFO, "Source : %s", name) return true;
+		blog(LOG_INFO, "Source : %s", name);
+		return true;
 	};
 
 	using cb_t = decltype(cb);
