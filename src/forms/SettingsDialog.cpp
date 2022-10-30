@@ -25,10 +25,10 @@ void SettingsDialog::ToggleShowHide()
 
 void SettingsDialog::showEvent(QShowEvent *)
 {
-	obs_enum_sources(SettingsDialog::enumAudioSources, nullptr);
+	obs_enum_sources(enumAudioSources, nullptr);
 }
 
-static bool SettingsDialog::enumAudioSources(void *, obs_source_t *source)
+static bool enumAudioSources(void *, obs_source_t *source)
 {
 	uint32_t flags = obs_source_get_output_flags(source);
 
