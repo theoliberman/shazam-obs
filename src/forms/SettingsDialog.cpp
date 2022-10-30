@@ -26,7 +26,7 @@ void SettingsDialog::ToggleShowHide()
 void SettingsDialog::showEvent(QShowEvent *)
 {
 	auto cb = [this](obs_source_t *source) {
-		char *name = obs_source_get_name(source);
+		const char *name = obs_source_get_name(source);
 		blog(LOG_INFO, "Source : %s", name);
 		return true;
 	};
