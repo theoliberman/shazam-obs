@@ -10,6 +10,7 @@ public:
 	explicit SettingsDialog(QWidget *parent = 0);
 	~SettingsDialog();
 	void ToggleShowHide();
+	void showEvent(QShowEvent *event);
 
 private:
 	Ui::SettingsDialog *ui;
