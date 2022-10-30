@@ -28,9 +28,9 @@ void SettingsDialog::showEvent(QShowEvent *)
 	obs_enum_sources(EnumAudioSources, nullptr);
 }
 
-static bool SettingsDialog::EnumAudioSources(void *stx, obs_source_t *source)
+bool SettingsDialog::EnumAudioSources(void *stx, obs_source_t *source)
 {
-	(void)stx; 
+	(void)stx;
 
 	uint32_t flags = obs_source_get_output_flags(source);
 
