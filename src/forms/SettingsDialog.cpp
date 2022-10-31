@@ -32,16 +32,10 @@ void SettingsDialog::showEvent(QShowEvent *)
 		return true;
 	};
 
-	char *section;
-	char sectionchar[] = "ShazamOBS";
-	char *conf_name;
-	char conf_name_char[] = "SourceName";
-	section = sectionchar;
-	conf_name = conf_name_char;
-
 	config_t **_config = nullptr;
 	config_open(_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
-	char *source_name = config_get_string(*_config, section, conf_name);
+	const char *source_name =
+		config_get_string(*_config, "ShazamOBS", "SourceName");
 	blog(LOG_INFO, "Loaded conf : %s", source_name);
 	config_close(*_config);
 
