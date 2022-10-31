@@ -20,21 +20,20 @@ with this program. If not, see <https://www.gnu.org/licenses/>
 #include <QMainWindow>
 #include <obs-module.h>
 #include <obs-frontend-api.h>
+#include <util/config-file.h>
 #include "plugin-macros.generated.h"
-#include "Config.h"
 #include "forms/SettingsDialog.h"
 
 OBS_DECLARE_MODULE()
 OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
 
 SettingsDialog *_settingsDialog = nullptr;
-ConfigPtr _config;
+auto *_config;
 
 bool obs_module_load(void)
 {
 
-	_config = ConfigPtr(new Config());
-	_config->Load();
+	int confInt = config_open_string(_config, "ShazamOBS", CONFIG_OPEN_ALWAYS)
 
 	obs_frontend_push_ui_translation(obs_module_get_string);
 	QMainWindow *mainWindow =
