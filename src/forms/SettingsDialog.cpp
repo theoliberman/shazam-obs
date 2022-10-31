@@ -44,7 +44,7 @@ void SettingsDialog::showEvent(QShowEvent *)
 		config_get_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE);
 	int index = ui->comboBox->findData(SourceName);
 	if (index != -1) {
-		combo->setCurrentIndex(index);
+		ui->comboBox->setCurrentIndex(index);
 	}
 
 	using cb_t = decltype(cb);
