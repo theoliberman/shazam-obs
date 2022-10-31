@@ -36,7 +36,10 @@ SettingsDialog *_settingsDialog = nullptr;
 static void audio_capture_callback(void *param, obs_source_t *source,
 				   const struct audio_data *data, bool muted)
 {
+	UNUSED_PARAMETER(param);
 	UNUSED_PARAMETER(source);
+	UNUSED_PARAMETER(data);
+	UNUSED_PARAMETER(muted);
 
 	blog(LOG_INFO, "Audio callback");
 }
