@@ -50,7 +50,7 @@ void SettingsDialog::showEvent(QShowEvent *)
 	config_t *obsConfig = obs_frontend_get_global_config();
 	auto SourceName =
 		config_get_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE);
-	int index = ui->comboBox->findData(SourceName);
+	int index = ui->comboBox->find(SourceName);
 	blog(LOG_INFO, "Config loaded : %s", SourceName);
 	blog(LOG_INFO, "Index : %d", index);
 	if (index != -1) {
