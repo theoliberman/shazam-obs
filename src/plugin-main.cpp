@@ -49,7 +49,7 @@ bool obs_module_load(void)
 		config_get_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE);
 	obs_source_t source = *obs_get_source_by_name(SourceName);
 	obs_source_add_audio_capture_callback(source, audio_capture_callback,
-					      stsf);
+					      nullptr);
 
 	obs_frontend_push_ui_translation(obs_module_get_string);
 	QMainWindow *mainWindow =
