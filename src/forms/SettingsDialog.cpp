@@ -33,10 +33,11 @@ void SettingsDialog::showEvent(QShowEvent *)
 	};
 
 	char *section;
+	char sectionchar[] = "ShazamOBS";
 	char *conf_name;
-
-	section = "ShazamOBS";
-	conf_name = "SourceName";
+	char conf_name_char[] = "SourceName";
+	section = sectionchar;
+	conf_name = conf_name_char;
 
 	config_t **_config = nullptr;
 	config_open(_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
