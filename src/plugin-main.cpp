@@ -52,7 +52,7 @@ bool obs_module_load(void)
 	blog(LOG_INFO, "plugin loaded successfully (version %s)",
 	     PLUGIN_VERSION);
 	blog(LOG_INFO, "conf loaded : %s",
-	    confInt);
+	    "" + confInt);
 	return true;
 }
 
