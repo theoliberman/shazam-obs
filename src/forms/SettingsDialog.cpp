@@ -1,9 +1,12 @@
 #include <obs-module.h>
 #include <obs.hpp>
-#include <util/config-file.h>
+#include <obs-frontend-api.h>
 #include "../plugin-macros.generated.h"
-
 #include "SettingsDialog.h"
+
+#define CONFIG_SECTION_NAME "ShazamOBS"
+
+#define PARAM_SOURCE "SourceName"
 
 SettingsDialog::SettingsDialog(QWidget *parent)
 	: QDialog(parent, Qt::Dialog), ui(new Ui::SettingsDialog)
@@ -32,10 +35,10 @@ void SettingsDialog::showEvent(QShowEvent *)
 		return true;
 	};
 
-	config_t **_config = nullptr;
-	config_open(_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
-	config_get_string(*_config, "ShazamOBS", "SourceName");
-	// config_close(*_config);
+	config_t *obsConfig = obs_frontend_get_global_config();
+	auto SourceName =
+		config_get_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE);
+	blog(LOG_INFO, "config loaded successfully %s", SourceName);
 
 	using cb_t = decltype(cb);
 
