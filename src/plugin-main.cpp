@@ -28,7 +28,7 @@ OBS_DECLARE_MODULE()
 OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
 
 SettingsDialog *_settingsDialog = nullptr;
-auto *_config;
+auto *_config = nullptr;
 
 bool obs_module_load(void)
 {
