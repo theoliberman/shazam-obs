@@ -33,7 +33,7 @@ config_t **_config = nullptr;
 bool obs_module_load(void)
 {
 
-	config_open(*_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
+	config_open(_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
 	config_set_string(*_config, "ShazamOBS", "SourceName",
 			  "Name of the source");
 	config_save(*_config);
