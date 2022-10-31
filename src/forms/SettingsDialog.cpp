@@ -34,9 +34,9 @@ void SettingsDialog::showEvent(QShowEvent *)
 
 	config_t **_config = nullptr;
 	config_open(_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
-	// const char *source_name =
-	// 	config_get_string(*_config, "ShazamOBS", "SourceName");
-	// blog(LOG_INFO, "Loaded conf : %s", source_name);
+	const char *source_name =
+		config_get_string(*_config, "ShazamOBS", "SourceName");
+	//blog(LOG_INFO, "Loaded conf : %s", source_name);
 	// config_close(*_config);
 
 	using cb_t = decltype(cb);
