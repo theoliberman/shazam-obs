@@ -24,20 +24,32 @@ with this program. If not, see <https://www.gnu.org/licenses/>
 #include "plugin-macros.generated.h"
 #include "forms/SettingsDialog.h"
 
+#define CONFIG_SECTION_NAME "ShazamOBS"
+
+#define PARAM_SOURCE "SourceName"
+
 OBS_DECLARE_MODULE()
 OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
 
 SettingsDialog *_settingsDialog = nullptr;
-config_t **_config = nullptr;
+
+static void audio_capture_callback(void *param, obs_source_t *source,
+				   const struct audio_data *data, bool muted)
+{
+	UNUSED_PARAMETER(source);
+
+	blog(LOG_INFO, "Audio callback")
+}
 
 bool obs_module_load(void)
 {
 
-	// config_open(_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
-	// config_set_string(*_config, "ShazamOBS", "SourceName",
-	// 		  "Name of the source");
-	// config_save(*_config);
-	// config_close(*_config);
+	config_t *obsConfig = obs_frontend_get_global_config();
+	auto SourceName =
+		config_get_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE);
+	obs_source_t source = *obs_get_source_by_name(SourceName);
+	obs_source_add_audio_capture_callback(source, audio_capture_callback,
+					      stsf);
 
 	obs_frontend_push_ui_translation(obs_module_get_string);
 	QMainWindow *mainWindow =
