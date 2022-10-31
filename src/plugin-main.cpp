@@ -33,10 +33,9 @@ config_t **_config = nullptr;
 bool obs_module_load(void)
 {
 
-	int confInt =
-		config_open_string(_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
+	int confInt = config_open(_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
 
-			obs_frontend_push_ui_translation(obs_module_get_string);
+	obs_frontend_push_ui_translation(obs_module_get_string);
 	QMainWindow *mainWindow =
 		static_cast<QMainWindow *>(obs_frontend_get_main_window());
 	_settingsDialog = new SettingsDialog(mainWindow);
