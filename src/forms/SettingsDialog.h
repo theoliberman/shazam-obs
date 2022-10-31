@@ -13,6 +13,9 @@ public:
 	void showEvent(QShowEvent *event);
 	void hideEvent(QHideEvent *event);
 
+private Q_SLOTS:
+	void ApplyButton();
+
 private:
 	Ui::SettingsDialog *ui;
 };

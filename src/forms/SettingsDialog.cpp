@@ -4,6 +4,7 @@
 #include "../plugin-macros.generated.h"
 #include "SettingsDialog.h"
 #include <util/config-file.h>
+#include <QString>
 
 #define CONFIG_SECTION_NAME "ShazamOBS"
 
@@ -13,6 +14,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 	: QDialog(parent, Qt::Dialog), ui(new Ui::SettingsDialog)
 {
 	ui->setupUi(this);
+	connect(ui->applyButton, &QPushButton::clicked, this,
+		&SettingsDialog::ApplyButton);
 }
 
 SettingsDialog::~SettingsDialog()
@@ -53,4 +56,12 @@ void SettingsDialog::showEvent(QShowEvent *)
 void SettingsDialog::hideEvent(QHideEvent *)
 {
 	ui->comboBox->clear();
+}
+
+void SettingsDialog::ApplyButton()
+{
+	QString str1 = ui->comboBox->currentText;
+	QByteArray ba = str1.toLocal8Bit();
+	const char *selected_source = ba.data();
+	blog(LOG_INFO, "Selected source : %s", selected_source);
 }
