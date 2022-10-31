@@ -60,9 +60,10 @@ void SettingsDialog::hideEvent(QHideEvent *)
 
 void SettingsDialog::ApplyButton()
 {
+	config_t *obsConfig = obs_frontend_get_global_config();
 	QString str1 = ui->comboBox->currentText();
 	QByteArray ba = str1.toLocal8Bit();
 	const char *selected_source = ba.data();
-	config_set_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE;
+	config_set_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE,
 			  selected_source);
 }
