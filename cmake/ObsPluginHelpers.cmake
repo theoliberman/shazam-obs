@@ -180,6 +180,7 @@ if(OS_POSIX)
       -Wformat
       -Wformat-security
       -Wswitch
+      -Wno-unused-variable
       -Wno-unused-parameter
       -Wno-unused-function
       -Wno-missing-field-initializers
