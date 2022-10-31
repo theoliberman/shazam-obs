@@ -42,7 +42,10 @@ void SettingsDialog::showEvent(QShowEvent *)
 	config_t *obsConfig = obs_frontend_get_global_config();
 	auto SourceName =
 		config_get_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE);
-	blog(LOG_INFO, "config loaded successfully %s", SourceName);
+	int index = ui->comboBox->findData(SourceName);
+	if (index != -1) {
+		combo->setCurrentIndex(index);
+	}
 
 	using cb_t = decltype(cb);
 
