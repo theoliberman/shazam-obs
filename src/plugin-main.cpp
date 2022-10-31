@@ -38,7 +38,7 @@ static void audio_capture_callback(void *param, obs_source_t *source,
 {
 	UNUSED_PARAMETER(source);
 
-	blog(LOG_INFO, "Audio callback")
+	blog(LOG_INFO, "Audio callback");
 }
 
 bool obs_module_load(void)
