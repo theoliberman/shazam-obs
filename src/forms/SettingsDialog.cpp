@@ -60,7 +60,7 @@ void SettingsDialog::hideEvent(QHideEvent *)
 
 void SettingsDialog::ApplyButton()
 {
-	QString str1 = ui->comboBox->currentText;
+	QString str1 = ui->comboBox->currentText();
 	QByteArray ba = str1.toLocal8Bit();
 	const char *selected_source = ba.data();
 	blog(LOG_INFO, "Selected source : %s", selected_source);
