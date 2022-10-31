@@ -39,14 +39,6 @@ void SettingsDialog::showEvent(QShowEvent *)
 		return true;
 	};
 
-	config_t *obsConfig = obs_frontend_get_global_config();
-	auto SourceName =
-		config_get_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE);
-	int index = ui->comboBox->findData(SourceName);
-	if (index != -1) {
-		ui->comboBox->setCurrentIndex(index);
-	}
-
 	using cb_t = decltype(cb);
 
 	obs_enum_sources(
@@ -54,6 +46,14 @@ void SettingsDialog::showEvent(QShowEvent *)
 			return (*static_cast<cb_t *>(d))(source);
 		},
 		&cb);
+
+	config_t *obsConfig = obs_frontend_get_global_config();
+	auto SourceName =
+		config_get_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE);
+	int index = ui->comboBox->findData(SourceName);
+	if (index != -1) {
+		ui->comboBox->setCurrentIndex(index);
+	}
 }
 
 void SettingsDialog::hideEvent(QHideEvent *)
