@@ -1,5 +1,6 @@
 #include <obs-module.h>
 #include <obs.hpp>
+#include <util/config-file.h>
 #include "../plugin-macros.generated.h"
 
 #include "SettingsDialog.h"
@@ -30,6 +31,13 @@ void SettingsDialog::showEvent(QShowEvent *)
 		ui->comboBox->addItem(name);
 		return true;
 	};
+
+	config_t **_config = nullptr;
+	config_open(_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
+	char *source_name =
+		config_get_string(_config, "ShazamOBS", "SourceName");
+	blog(LOG_INFO, "Loaded conf : %s", source_name);
+	config_close();
 
 	using cb_t = decltype(cb);
 
