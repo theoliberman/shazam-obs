@@ -33,11 +33,11 @@ config_t **_config = nullptr;
 bool obs_module_load(void)
 {
 
-	config_open(_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
-	config_set_string(_config, "ShazamOBS", "SourceName",
+	config_open(*_config, "ShazamOBS", CONFIG_OPEN_ALWAYS);
+	config_set_string(*_config, "ShazamOBS", "SourceName",
 			  "Name of the source");
-	config_save(_config);
-	config_close();
+	config_save(*_config);
+	config_close(*_config);
 
 	obs_frontend_push_ui_translation(obs_module_get_string);
 	QMainWindow *mainWindow =
