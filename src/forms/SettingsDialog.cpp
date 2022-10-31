@@ -3,6 +3,7 @@
 #include <obs-frontend-api.h>
 #include "../plugin-macros.generated.h"
 #include "SettingsDialog.h"
+#include <util/config-file.h>
 
 #define CONFIG_SECTION_NAME "ShazamOBS"
 
