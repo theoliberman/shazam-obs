@@ -78,6 +78,6 @@ void SettingsDialog::RecordButton()
 	config_t *obsConfig = obs_frontend_get_global_config();
 	auto SourceName =
 		config_get_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE);
-	obs_source_t *source = obs_get_source_by_name(SourceName);
+	//obs_source_t *source = obs_get_source_by_name(SourceName);
 	blog(LOG_INFO, "Add audio callback to : %s", SourceName);
 }
