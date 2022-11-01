@@ -12,7 +12,7 @@ public:
 	void ToggleShowHide();
 	void showEvent(QShowEvent *event);
 	void hideEvent(QHideEvent *event);
-	static void audio_capture_callback(oid *param, obs_source_t *source,
+	static void audio_capture_callback(void *param, obs_source_t *source,
 					   const struct audio_data *data,
 					   bool muted);
 
