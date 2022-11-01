@@ -41,7 +41,9 @@ static void audio_capture_callback(void *param, obs_source_t *source,
 	UNUSED_PARAMETER(data);
 	UNUSED_PARAMETER(muted);
 
-	blog(LOG_INFO, "Audio callback");
+	uint32_t frames = audio_data.frames;
+
+	blog(LOG_INFO, "Audio callback : %u", frames);
 }
 
 bool obs_module_load(void)
