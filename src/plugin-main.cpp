@@ -33,18 +33,6 @@ OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
 
 SettingsDialog *_settingsDialog = nullptr;
 
-static void audio_capture_callback(void *param, obs_source_t *source,
-				   const struct audio_data *data, bool muted)
-{
-	UNUSED_PARAMETER(param);
-	UNUSED_PARAMETER(source);
-	UNUSED_PARAMETER(muted);
-
-	uint32_t frames = data->frames;
-
-	blog(LOG_INFO, "Audio callback : %u", frames);
-}
-
 bool obs_module_load(void)
 {
 

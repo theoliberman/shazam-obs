@@ -33,6 +33,13 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QPushButton" name="recordButton">
+     <property name="text">
+      <string>Record</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources>

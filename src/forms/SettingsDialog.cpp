@@ -10,12 +10,26 @@
 
 #define PARAM_SOURCE "SourceName"
 
+static void audio_capture_callback(void *param, obs_source_t *source,
+				   const struct audio_data *data, bool muted)
+{
+	UNUSED_PARAMETER(param);
+	UNUSED_PARAMETER(source);
+	UNUSED_PARAMETER(muted);
+
+	uint32_t frames = data->frames;
+
+	blog(LOG_INFO, "Audio callback : %u", frames);
+}
+
 SettingsDialog::SettingsDialog(QWidget *parent)
 	: QDialog(parent, Qt::Dialog), ui(new Ui::SettingsDialog)
 {
 	ui->setupUi(this);
 	connect(ui->applyButton, &QPushButton::clicked, this,
 		&SettingsDialog::ApplyButton);
+	connect(ui->recordButton, &QPushButton::clicked, this,
+		&SettingsDialog::RecordButton);
 }
 
 SettingsDialog::~SettingsDialog()
@@ -69,4 +83,15 @@ void SettingsDialog::ApplyButton()
 	const char *selected_source = ba.data();
 	config_set_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE,
 			  selected_source);
+}
+
+void SettingsDialog::RecordButton()
+{
+	config_t *obsConfig = obs_frontend_get_global_config();
+	auto SourceName =
+		config_get_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE);
+	obs_source_t *source = obs_get_source_by_name(SourceName);
+	blog(LOG_INFO, "Add audio callback to : %s", SourceName);
+	obs_source_add_audio_capture_callback(source, audio_capture_callback,
+					      nullptr);
 }

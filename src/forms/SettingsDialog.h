@@ -15,6 +15,7 @@ public:
 
 private Q_SLOTS:
 	void ApplyButton();
+	void RecordButton();
 
 private:
 	Ui::SettingsDialog *ui;
