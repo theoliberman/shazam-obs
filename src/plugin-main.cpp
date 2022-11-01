@@ -35,12 +35,6 @@ SettingsDialog *_settingsDialog = nullptr;
 
 bool obs_module_load(void)
 {
-
-	config_t *obsConfig = obs_frontend_get_global_config();
-	auto SourceName =
-		config_get_string(obsConfig, CONFIG_SECTION_NAME, PARAM_SOURCE);
-	obs_source_t *source = obs_get_source_by_name(SourceName);
-
 	obs_frontend_push_ui_translation(obs_module_get_string);
 	QMainWindow *mainWindow =
 		static_cast<QMainWindow *>(obs_frontend_get_main_window());
