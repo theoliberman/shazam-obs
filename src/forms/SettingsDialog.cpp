@@ -10,8 +10,10 @@
 
 #define PARAM_SOURCE "SourceName"
 
-static void audio_capture_callback(void *param, obs_source_t *source,
-				   const struct audio_data *data, bool muted)
+static void
+SettingsDialog::audio_capture_callback(void *param, obs_source_t *source,
+				       const struct audio_data *data,
+				       bool muted)
 {
 	UNUSED_PARAMETER(param);
 	UNUSED_PARAMETER(source);
